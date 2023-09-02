@@ -1,4 +1,5 @@
-import FunctLIB
+from FunctLIB import hello
+
 
 print("Hello World!!!")
 x = 10
@@ -44,10 +45,6 @@ intersect = set1 & set2
 print(intersect)
 mod = set1 | set2 # use "-" to get difference of sets, <> to see if items are in both sets.
 print(mod)
-
-#functions
-def hello():
-    print('Hello world again!!!')
 
 hello()
 # Classes
