@@ -29,3 +29,24 @@ print(employee2["fname"])
 dicEmps = (employee1, employee2)
 print(dicEmps[1]["pay"])
 print(dicEmps[0].get("pay"))
+print(list(employee1.keys()))
+print(list(employee1.values()))
+employee1["status"] = "Perm"
+employee2["status"] = "Temp"
+
+print(list(employee1.keys()))
+print(list(employee2.values()))
+
+#sets - are like Tuples but can be modified and looks like a dict without the keys
+set1 = {"Clyde", "Sam", "Terry"}
+set2 = {"Clyde", "Sam"}
+intersect = set1 & set2
+print(intersect)
+mod = set1 | set2 # use "-" to get difference of sets, <> to see if items are in both sets.
+print(mod)
+
+#functions
+def hello():
+    print('Hello world again!!!')
+
+hello()
