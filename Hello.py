@@ -1,4 +1,4 @@
-from FunctLIB import hello
+from functionLibrary.FunctLIB import hello
 
 
 print("Hello World!!!")
@@ -46,7 +46,7 @@ print(intersect)
 mod = set1 | set2 # use "-" to get difference of sets, <> to see if items are in both sets.
 print(mod)
 
-hello()
+
 # Classes
 class Animal:
     def walk(self):
@@ -63,3 +63,5 @@ class Dog(Animal):
 rodger = Dog("Rodger", 8)
 rodger.bark()
 rodger.walk()
+
+hello() #imported from function library
