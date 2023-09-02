@@ -50,3 +50,19 @@ def hello():
     print('Hello world again!!!')
 
 hello()
+# Classes
+class Animal:
+    def walk(self):
+        print("Walking...") # showing inheartance of classes
+
+class Dog(Animal):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self): # self always has to be included in methods and intanciation
+        print("Woof, Woof!")
+
+rodger = Dog("Rodger", 8)
+rodger.bark()
+rodger.walk()
