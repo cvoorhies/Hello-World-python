@@ -1,4 +1,4 @@
-import functLIB
+import FunctLIB
 
 print("Hello World!!!")
 x = 10
