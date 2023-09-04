@@ -73,3 +73,13 @@ multiply = lambda a, b : a * b
 
 print(multiply(2,4))
 print(result(5))
+
+# map, filter, reduce used on lists to manipulate the list to a new list
+
+# Recursion
+
+def factorial(n):
+    if n==1 : return 1
+    return n * factorial(n-1)
+
+print(factorial(5))
