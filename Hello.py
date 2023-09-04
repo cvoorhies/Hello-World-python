@@ -65,3 +65,11 @@ rodger.bark()
 rodger.walk()
 
 hello() #imported from function library
+
+# Lambda functions
+result = lambda num : num * 2
+
+multiply = lambda a, b : a * b
+
+print(multiply(2,4))
+print(result(5))
