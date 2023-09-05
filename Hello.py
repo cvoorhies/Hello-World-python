@@ -79,7 +79,15 @@ print(result(5))
 # Recursion
 
 def factorial(n):
+    """ this is a docstring used to annotate what programs are doing and utilize
+    the help to get more information about it.This function will give you the factorial of a number
+    """
     if n==1 : return 1
     return n * factorial(n-1)
+    
 
 print(factorial(5))
+
+
+
+print(help(factorial))
