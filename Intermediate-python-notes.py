@@ -50,3 +50,7 @@ import timeit # calculates how long it takes to create a list vs tuple
 print(timeit.timeit(stmt="[0, 1, 2, 3, 4, 5]", number=1000000))
 print(timeit.timeit(stmt="(0, 1, 2, 3, 4, 5)", number=1000000))
 print()
+
+# Dictionaries: Collection data type, Key-Value pairs, Unordered, Mutable and created with {}
+myDict = {"name": "Clyde", "age": 53, "city":"Tracy"}
+print(myDict)
