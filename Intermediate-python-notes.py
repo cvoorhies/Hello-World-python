@@ -127,3 +127,22 @@ try:
 except:
     print("This will be the error message printed out")
 print()
+
+# To loop through the dict and get the key value pair use:
+
+for key, value in myDict.items():
+    print(key, value)
+
+#When copying a dict avoid just asigning it to copy. If you make changes to one it changes the original
+# use this methods for copying
+
+myDict_Cpy = myDict.copy()
+print(myDict_Cpy)
+# or
+myDict_Cpy = dict(myDict)
+myDict["email"] = "MyOfficeSpace888@gmail.com"
+print(myDict)
+print(myDict_Cpy)
+
+print()
+done = input("are you done looking at results, hit enter")
