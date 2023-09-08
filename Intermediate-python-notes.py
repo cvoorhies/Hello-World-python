@@ -50,3 +50,11 @@ import timeit # calculates how long it takes to create a list vs tuple
 print(timeit.timeit(stmt="[0, 1, 2, 3, 4, 5]", number=1000000))
 print(timeit.timeit(stmt="(0, 1, 2, 3, 4, 5)", number=1000000))
 print()
+
+#Dictionaries: Key-value pairs, Unordered, Mutable, created with {}
+mydict = {"name": "Clyde", "age": 53, "city": "Tracy"}
+print(mydict)
+
+#to add another elememt (Key & Value)
+mydict["email"] = "MyOfficeSpace888@gmail.com"
+print(mydict)
