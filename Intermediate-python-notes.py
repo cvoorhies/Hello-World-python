@@ -105,3 +105,7 @@ print()
 # Dictionaries: Collection data type, Key-Value pairs, Unordered, Mutable and created with {}
 myDict = {"name": "Clyde", "age": 53, "city":"Tracy"}
 print(myDict)
+
+#to add another elememt (Key & Value)
+mydict["email"] = "MyOfficeSpace888@gmail.com"
+print(mydict)
