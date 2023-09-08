@@ -1,3 +1,6 @@
+print()
+print()
+print()
 # Lists are created with square brackets
 myList = ["banna", "cherry", "apple", "orange"]
 print(myList)
@@ -34,3 +37,16 @@ print(name)
 print(age)
 print(city)
 print(type(my_tuple1))
+print()
+
+import sys
+my_list2 = [0, 1, 2, "Hello", True]
+my_tuple4 = (0, 1, 2, "Hello", True)
+print(sys.getsizeof(my_list2))
+print(sys.getsizeof(my_tuple4)) # Tuples use less space than lists
+print()
+
+import timeit # calculates how long it takes to create a list vs tuple
+print(timeit.timeit(stmt="[0, 1, 2, 3, 4, 5]", number=1000000))
+print(timeit.timeit(stmt="(0, 1, 2, 3, 4, 5)", number=1000000))
+print()
