@@ -106,6 +106,24 @@ print()
 myDict = {"name": "Clyde", "age": 53, "city":"Tracy"}
 print(myDict)
 
+#to access the values:
+value = myDict["name"]
+print(value)
 #to add another elememt (Key & Value)
-mydict["email"] = "MyOfficeSpace888@gmail.com"
-print(mydict)
+myDict["email"] = "MyOfficeSpace888@gmail.com"
+print(myDict)
+
+# to delete items from a dict,  use keyword del, or pop("key") or
+myDict.popitem()# takes the last item off of the dict
+print(myDict)
+
+#to find out if there is a key in a dict use this
+if "age" in myDict:
+    print("age")
+
+#or
+try:
+    print(myDict["lastname"])
+except:
+    print("This will be the error message printed out")
+print()
