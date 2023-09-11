@@ -186,6 +186,11 @@ print(setA.issuperset(setB)) # result is True because its the opposite of subset
 
 #frozen set is also a data collection type which is a immutable version of a set
 
+#strings: ordered, immutable, text representation. using triple quotes is for multiline strings
+
+my_String = 'How,are,you,doing' 
+my_List = my_String.split(",") # uses the , as a delimiter and splits each word as 1 element in the list
+print(my_List)
 
 
 
