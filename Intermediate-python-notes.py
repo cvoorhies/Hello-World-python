@@ -144,5 +144,52 @@ myDict["email"] = "MyOfficeSpace888@gmail.com"
 print(myDict)
 print(myDict_Cpy)
 
+#Sets: Unordered, mutable, no duplicates ( previous data structures can have duplicates)
+#Sets are created with Curly brackets like a dict but no key/value pairs. Just items seperated with a colon.
+mySet = {1, 2, 3, 4, 5, 6, 7, 8, 9}
+print(mySet)
+mySet2 = set("Hello World")
+print(mySet2)
+#To create a empy set you have to use the set() method.
+#use .add method to add to a set
+mySet.add(10)
+mySet2.add("A")
+print(mySet)
+print(mySet2)
+# To remove elements use the .remove() or the .discard() and to empty set us .clear. .pop() woks as well
+#unions, and intersections
+setOdd = {1,3,5,7,9}
+setEven = {2, 4, 6, 8, 10}
+setPrime = {2, 3, 5, 7}
+
+myUnion = setOdd.union(setEven)
+print(myUnion)
+
+myIntersection = setOdd.intersection(setPrime)
+print(myIntersection)
+
+diff = setOdd.difference(setEven) # Prints everything not in setEven
+diff2 = setOdd.symmetric_difference(setEven) #Prints everything that is in setOdd and SetEven that are not in both sets
+print(diff)
+print(diff2)
+
+#Use setA.union or difference or symetric_difference_update(setB) to change a set
+
+# Supersets and disjoints methods
+setA = {1, 2, 3, 4, 5, 6}
+setB = {1, 2, 3}
+
+print(setA.issubset(setB)) # result is false because neither set has the same items
+print(setA.issuperset(setB)) # result is True because its the opposite of subset. 
+
+#.isdisjoint() gives True only if both sets don't have any of the same items.
+
+#frozen set is also a data collection type which is a immutable version of a set
+
+
+
+
+
+
 print()
 done = input("are you done looking at results, hit enter")
