@@ -210,6 +210,15 @@ var2 = 88
 my_String = f'the variable is {var} and {var2}'
 print(my_String)
 
+#Collections - Counter, namedtuple, orderedDict, defaultdict, deque
+
+from collections import Counter
+a = "aaaaabbbbccccddddddd"
+my_Counter = Counter(a)
+print(my_Counter) ### this gives a dictionary with key value setup like Counter({'d': 7, 'a': 5, 'b': 4, 'c': 4})
+print(my_Counter.most_common(2)) # gives the key/value of the greatest values
+
+
 
 
 print()
