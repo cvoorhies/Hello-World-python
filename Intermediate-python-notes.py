@@ -263,6 +263,49 @@ b = [3, 4]
 prod = product(a,b)
 print(list(prod))
 
+from itertools import permutations # good for finding various combonations to a cypher.
+a = [1, 2, 3, 4]
+perm = permutations(a, 2) # the 2 is length of permutations, and is optional
+print(list(perm))
+
+from itertools import combinations # just like a permutation except the length is required
+a = [1, 2, 3, 4]
+comb = combinations(a, 3)
+print(list(comb))
+
+from itertools import accumulate
+a = [1, 2, 3, 4]
+acc = accumulate(a)
+print(a)
+print(list(acc))
+
+import operator # to multiply the outputs
+a = [1, 2, 3, 4]
+acc = accumulate(a, func=operator.mul)
+print(a)
+print(list(acc))
+
+# groupby itertool
+from itertools import groupby
+def smaller_than_3(x):
+    return x < 3
+a = [1, 2, 3, 4]
+group_obj = groupby(a, key=smaller_than_3) #can use a lambda function for the key, lambda x: x<3
+for key, value in group_obj:
+    print(key, list(value))
+
+# another groupby example:
+persons = [{'name': 'Tim', 'age':25}, {'name': 'Dan', 'age': 25}, 
+           {'name': 'Lisa', 'age': 27}, {'name': 'Claire', 'age': 28}]
+
+group_obj = groupby(persons, key=lambda x: x['age'])
+for key, value in group_obj:
+    print(key, list(value))
+
+
+
+
+
 
 
 print()
