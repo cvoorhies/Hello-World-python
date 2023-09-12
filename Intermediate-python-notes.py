@@ -191,8 +191,24 @@ print(setA.issuperset(setB)) # result is True because its the opposite of subset
 my_String = 'How,are,you,doing' 
 my_List = my_String.split(",") # uses the , as a delimiter and splits each word as 1 element in the list
 print(my_List)
+new_string = ' '.join(my_List) # adding a space or , or something it seperates each item by that thing. In this case a space
+print(new_string)
+
+#Formating strings using %, .format(), and f-strings
+var = 'Clyde'
+my_String = 'the variable is %s' % var # the s is for string, if the variable was a decimal use d or if float use f
+print(my_String)
 
 
+var = 3.145
+my_String = 'the variable is {:.2f}'.format(var) # the :.2f is to limit the decimal point
+print(my_String)
+
+
+var = 3.145
+var2 = 88
+my_String = f'the variable is {var} and {var2}'
+print(my_String)
 
 
 
