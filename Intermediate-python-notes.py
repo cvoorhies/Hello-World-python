@@ -218,6 +218,50 @@ my_Counter = Counter(a)
 print(my_Counter) ### this gives a dictionary with key value setup like Counter({'d': 7, 'a': 5, 'b': 4, 'c': 4})
 print(my_Counter.most_common(2)) # gives the key/value of the greatest values
 
+#namedtuples
+from collections import namedtuple
+Point = namedtuple('Point', 'x,y')
+pt = Point(1, -4)
+print(pt)
+print(pt.x, pt.y)
+
+
+#OrderedDict is used to remember the order items were inserted. This is from an older version \
+# of python and isn't used much any more.
+
+#defaultDict is the same as a dict except it has a default value if the key has not been set
+from collections import defaultdict
+d = defaultdict(float)
+d['a'] = 1
+d['b'] = 2
+print(d['c']) #give a default value of 0.0
+
+#deque ('deck')
+from collections import deque
+d = deque()
+
+d.append(1)
+d.append(2)
+
+d.appendleft(3)
+print(d)
+
+d.popleft()
+print(d)
+d.append(3)
+d.extendleft([4, 5, 6, 7])
+print(d)
+d.rotate(2) 
+print("""'rotated 2 to the left'""")
+print(d)
+
+print("""'itertools: product, permutations, combinations, accumulate, groupby, and infinite iterators'""")
+# gives a cartesian list of points, i.e. matrix calculations
+from itertools import product
+a = [1, 2]
+b = [3, 4]
+prod = product(a,b)
+print(list(prod))
 
 
 
