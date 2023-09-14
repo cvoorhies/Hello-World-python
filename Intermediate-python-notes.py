@@ -317,8 +317,14 @@ a=[1, 2, 3, 4, 5, 6]
 b = map(lambda x: x*2, a)
 print(list(b))
 
+c= filter(lambda x: x%2==0, a)
+print(list(c))
 
+from functools import reduce
+product_a = reduce(lambda x, y: x*y, a)
+print(product_a)
 
+#****************** Exceptions ************************
 
 
 
