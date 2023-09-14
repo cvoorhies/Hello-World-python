@@ -5,9 +5,7 @@ addSum = lambda x,y: x + y
 subSum = lambda x,y: x - y
 multiSum = lambda x,y: x * y
 divSum = lambda x,y: x / y
-a_input = 0.00
-b_input  = 0.00
-oper_sign = ''
+
 a_input = input('input first number: ')
 oper_sign = input("input oprator: ")
 b_input = input('input second number: ')
