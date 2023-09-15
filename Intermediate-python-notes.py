@@ -325,6 +325,55 @@ product_a = reduce(lambda x, y: x*y, a)
 print(product_a)
 
 #****************** Exceptions ************************
+# Syntax ore Exception errors
+# Exceptions are runtime errors
+# Use the 'Raise Exception('Error message you want to show up') to 
+# create your own errors
+# Example
+#x = -5
+#if x < 0:
+#    raise Exception('X should be positive')
+# Assert errors
+#x =-5
+#assert (x>=0), 'x is not positive'
+#
+# try/except error handling
+#try:
+#   a = -5/0
+#except:
+#   print('An error has occurred')
+
+#try:
+#   a = -5/0
+#except Exception as e:
+#   print(e) // gives a "divide by zero error message"
+
+#   a = 5/1
+#   b = a / '10
+#except ZeroDivisioinError as e:
+#   print(e) // gives a "divide by zero error message"
+#except TypeError as e:
+#   Print(e)  // gives a type error message
+#else:
+#   print('Everything is fine') /// prints this message if no error is found
+#finally:
+#   print('Cleaning up...') used to clean up or fix errors found. Error message will still be printed
+
+#### To create your own error message use:
+# class ValueTooHighError(Exception):
+#   pass
+
+#def test_value(x):
+#   if x > 100:
+#       raise ValueTooHighError('Value is too high')
+#test_value(200) // gives the error message
+
+# or you can do it this way
+#try:
+#   test_value(200) // gives the error message
+#except ValueTooHighError as e:
+#   print(e) give just the error message
+
 
 
 
