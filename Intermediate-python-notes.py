@@ -412,7 +412,7 @@ logger.error('this is an error message')
 
 import logging.config
 
-logging.config.fileConfig('logging.ini')
+logging.config.fileConfig('logging.conf')
 
 logger = logging.getLogger('simpleExample')
 logger.debug('this is a debug message')
