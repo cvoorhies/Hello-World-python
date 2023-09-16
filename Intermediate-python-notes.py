@@ -362,10 +362,16 @@ print(product_a)
 #### To create your own error message use:
 # class ValueTooHighError(Exception):
 #   pass
+# class ValueTooSmallError(Exception):
+#   def _init_(self, message, value):S
+#       self.message = message
+#       self.value = value
 
 #def test_value(x):
 #   if x > 100:
 #       raise ValueTooHighError('Value is too high')
+#   if x < 5:
+#       raise ValueTooSmallError('Value is too small', x)
 #test_value(200) // gives the error message
 
 # or you can do it this way
@@ -373,7 +379,10 @@ print(product_a)
 #   test_value(200) // gives the error message
 #except ValueTooHighError as e:
 #   print(e) give just the error message
+#except ValueTooSmallError as e:
+#   print(e.message, e.value)
 
+###### Logging ********
 
 
 
