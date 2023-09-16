@@ -342,12 +342,10 @@ print(product_a)
 #   a = -5/0
 #except:
 #   print('An error has occurred')
-
 #try:
 #   a = -5/0
 #except Exception as e:
 #   print(e) // gives a "divide by zero error message"
-
 #   a = 5/1
 #   b = a / '10
 #except ZeroDivisioinError as e:
@@ -358,7 +356,6 @@ print(product_a)
 #   print('Everything is fine') /// prints this message if no error is found
 #finally:
 #   print('Cleaning up...') used to clean up or fix errors found. Error message will still be printed
-
 #### To create your own error message use:
 # class ValueTooHighError(Exception):
 #   pass
@@ -366,14 +363,12 @@ print(product_a)
 #   def _init_(self, message, value):S
 #       self.message = message
 #       self.value = value
-
 #def test_value(x):
 #   if x > 100:
 #       raise ValueTooHighError('Value is too high')
 #   if x < 5:
 #       raise ValueTooSmallError('Value is too small', x)
 #test_value(200) // gives the error message
-
 # or you can do it this way
 #try:
 #   test_value(200) // gives the error message
@@ -384,18 +379,6 @@ print(product_a)
 
 ###### Logging ********
 import logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    datefmt='%m/%d/%y %H:%M:%S')
-logging.debug('This is a debug message')
-logging.info('This is an info message')
-logging.warning('This is a warning message') # with just these 5 messages only the warning and higher will be printed if the basicConfig message isn't there
-logging.error('This is an error message')
-logging.critical('This is a critical message')
-
-import Helper
-######### handler logging
-
-
 import logging.config
 
 logging.config.fileConfig('logging.conf')
