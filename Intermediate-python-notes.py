@@ -392,6 +392,8 @@ logging.warning('This is a warning message') # with just these 5 messages only t
 logging.error('This is an error message')
 logging.critical('This is a critical message')
 
+import Helper
+
 
 
 
