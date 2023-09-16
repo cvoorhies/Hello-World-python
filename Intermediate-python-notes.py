@@ -377,11 +377,11 @@ print(product_a)
 #except ValueTooSmallError as e:
 #   print(e.message, e.value)
 
-###### Logging ********
+# Logging 
 import logging
 import logging.config
 
-logging.config.fileConfig('logging.conf')
+logging.config.fileConfig('logging.ini')
 
 logger = logging.getLogger('simpleExample')
 logger.debug('this is a debug message')
