@@ -393,8 +393,15 @@ logging.error('This is an error message')
 logging.critical('This is a critical message')
 
 import Helper
+######### handler logging
 
 
+import logging.config
+
+logging.config.fileConfig('logging.conf')
+
+logger = logging.getLogger('simpleExample')
+logger.debug('this is a debug message')
 
 
 
