@@ -415,8 +415,51 @@ import logging.config
 logging.config.fileConfig('logging.conf')
 
 logger = logging.getLogger('simpleExample')
+print()
+print()
 logger.debug('this is a debug message')
 
+
+# stack trace 
+import logging
+import traceback
+
+try:
+    a = [1,2,3]
+    val = a[4]
+#except IndexError as e:
+#    logging.error(e, exc_info=True)
+# or can use:
+except:
+    logging.error("The error is %s", traceback.format_exc())
+# this give the same error message as previous code.
+
+
+#Rotating file handlers
+#from logging.handlers import RotatingFileHandler
+
+#logger = logging.getLogger(__name__)
+#logger.setLevel(logging.INFO)
+
+#handler = RotatingFileHandler('app.log', maxBytes=2000, backupCount=5)
+#logger.addHandler(handler)
+
+#for _ in range(10000):
+#    logger.info("Hello, world!") Creates 5 2kb files with hello wold written in it.
+
+from logging.handlers import TimedRotatingFileHandler
+import time
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+# s, m, h, d, midnight, w0=Monday, w1=Tuesday, etc for the when attribute
+handler = TimedRotatingFileHandler('timed_test.log', when='m', interval=1, backupCount=5)
+logger.addHandler(handler)
+
+for i in range(6):
+    logger.info("Hello, world!")
+    time.sleep(50)
 
 
 print()

@@ -1,8 +1,39 @@
-import logging
-import logging.config
+import tkinter as tk
 
-logging.config.fileConfig('logging.conf')
+root = tk.Tk()
+root.geometry('800x500')
+root.title("My first GUI")
 
-logger = logging.getLogger('simpleExample')
-logger.debug('this is a debug message')
+label = tk.Label(root, text='Hello World!', font=('Arial', 18))
+label.pack(padx=20, pady=20)
 
+textbox = tk.Text(root, height=5, font=('Arial', 16))
+textbox.pack()
+
+#myEntry = tk.Entry(root)
+#myEntry.pack()
+
+#button = tk.Button(root, text="Click Me", font=('Arial', 18))
+#button.pack()
+
+buttonFrame = tk.Frame(root)
+buttonFrame.columnconfigure(0, weight=1)
+buttonFrame.columnconfigure(1, weight=1)
+buttonFrame.columnconfigure(2, weight=1)
+
+
+
+btn1 = tk.Button(buttonFrame, text="1")
+btn1.grid(row=0, column=0, sticky=tk.W+tk.E)
+
+root.mainloop()
+
+
+#import turtle as t
+#from random import random
+
+#for i in range(100):
+#    steps = int(random() * 100)
+#    angle = int(random() * 360)
+#    t.right(angle)
+#    t.fd(steps)
