@@ -1,32 +1,46 @@
 import tkinter as tk
+from tkinter import messagebox
 
-root = tk.Tk()
-root.geometry('800x500')
-root.title("My first GUI")
+class MyGUI:
 
-label = tk.Label(root, text='Hello World!', font=('Arial', 18))
-label.pack(padx=20, pady=20)
+    def __init__(self):
+        self.root = tk.Tk()
+        self.label = tk.Label(self.root, text='Your Message', font=('Arial', 18))
+        self.label.pack(padx=10, pady=10)
 
-textbox = tk.Text(root, height=5, font=('Arial', 16))
-textbox.pack()
+        self.textbox = tk.Text(self.root, height=5, font=('Arial', 16))
+        self.textbox.pack(padx=10, pady=10)
 
-#myEntry = tk.Entry(root)
-#myEntry.pack()
+        self.check_State = tk.IntVar()
+        
+        self.check = tk.Checkbutton(self.root, text="Show Messagebox", font=('Arial', 16), variable=self.check_State)
+        self.check.pack(padx=10, pady=10)
 
-#button = tk.Button(root, text="Click Me", font=('Arial', 18))
-#button.pack()
+        self.button = tk.Button(self.root, text='Show Message', font=('Arial', 18), command=self.show_message)
+        self.button.pack(padx=10, pady=10)
 
-buttonFrame = tk.Frame(root)
-buttonFrame.columnconfigure(0, weight=1)
-buttonFrame.columnconfigure(1, weight=1)
-buttonFrame.columnconfigure(2, weight=1)
+        self.root.mainloop()
+
+    def show_message(self):
+        if self.check_State.get() == 0:
+            print(self.textbox.get('1.0', tk.END)) #the 1.0 starts the get at the beginning of the text box messages
+        else:
+            pass
+
+
+MyGUI()
 
 
 
-btn1 = tk.Button(buttonFrame, text="1")
-btn1.grid(row=0, column=0, sticky=tk.W+tk.E)
 
-root.mainloop()
+
+
+
+
+
+
+
+
 
 
 #import turtle as t
