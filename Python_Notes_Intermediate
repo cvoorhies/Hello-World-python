@@ -3,12 +3,13 @@ from tkinter import messagebox
 
 class MyGUI:
 
-    def __init__(self):
+    def __init__(self): # Sets up the gui box
         self.root = tk.Tk()
         self.label = tk.Label(self.root, text='Your Message', font=('Arial', 18))
         self.label.pack(padx=10, pady=10)
 
         self.textbox = tk.Text(self.root, height=5, font=('Arial', 16))
+        self.textbox.bind("<KeyPress>", self.shortcut)
         self.textbox.pack(padx=10, pady=10)
 
         self.check_State = tk.IntVar()
@@ -19,15 +20,17 @@ class MyGUI:
         self.button = tk.Button(self.root, text='Show Message', font=('Arial', 18), command=self.show_message)
         self.button.pack(padx=10, pady=10)
 
-        self.root.mainloop()
+        self.root.mainloop() # used to keep the box open.
 
     def show_message(self):
         if self.check_State.get() == 0:
             print(self.textbox.get('1.0', tk.END)) #the 1.0 starts the get at the beginning of the text box messages
         else:
-            pass
+            messagebox.showinfo(title='Message', message=self.textbox.get('1.0', tk.END))
 
-
+    def shortcut(self, event):
+        if event.state == 12 and event.keysym =='Return':
+            self.show_message()
 MyGUI()
 
 
