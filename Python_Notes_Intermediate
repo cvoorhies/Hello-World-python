@@ -11,6 +11,8 @@ class MyGUI:
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.filemenu.add_command(label='Close', command=self.on_Closing)# method allows user to confirm is they want to close the window.
         # to exit only without the prompt just keep command=Exit
+        self.filemenu.add_separator()
+        self.filemenu.add_command(label='Close without question', command=exit)
         self.menubar.add_cascade(menu=self.filemenu, label='File')
 
         self.root.config(menu=self.menubar)
