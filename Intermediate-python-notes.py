@@ -378,7 +378,7 @@ print(product_a)
 #   print(e.message, e.value)
 
 # Logging 
-import logging
+"""import logging
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     datefmt='%m/%d/%y %H:%M:%S')
@@ -417,21 +417,21 @@ logging.config.fileConfig('logging.conf')
 logger = logging.getLogger('simpleExample')
 print()
 print()
-logger.debug('this is a debug message')
+logger.debug('this is a debug message')"""
 
 
 # stack trace 
 import logging
 import traceback
 
-try:
-    a = [1,2,3]
-    val = a[4]
+#try:
+#    a = [1,2,3]
+#    val = a[2]
 #except IndexError as e:
 #    logging.error(e, exc_info=True)
 # or can use:
-except:
-    logging.error("The error is %s", traceback.format_exc())
+#except:
+#    logging.error("The error is %s", traceback.format_exc())
 # this give the same error message as previous code.
 
 
@@ -450,16 +450,17 @@ except:
 from logging.handlers import TimedRotatingFileHandler
 import time
 
-logger = logging.getLogger(__name__)
+"""logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # s, m, h, d, midnight, w0=Monday, w1=Tuesday, etc for the when attribute
-handler = TimedRotatingFileHandler('timed_test.log', when='m', interval=1, backupCount=5)
+handler = TimedRotatingFileHandler('timed_test.log', when='s', interval=5, backupCount=5)
 logger.addHandler(handler)
 
-for i in range(6):
+for _ in range(6):
     logger.info("Hello, world!")
-    time.sleep(50)
+    time.sleep(5)
+"""
 
 
 print()
