@@ -125,9 +125,42 @@ print(np.random.rand(3,3))
 np.random.seed(1)
 print(np.random.rand(3,3))# generates the same random numb array as the first
 
+### Decorators - 2 types are function decorators and class decorators
 
+"""
+Basic syntac of a decorator
+@mydecorator
+def dosomething():
+    pass
 
+It's a function that takes a function as an argument that extends the functionability
 
+"""
+## Template for a decorator:
+import functools
+def my_decorator(func):
 
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs): # *args, **kwargs allows an unlimited amount of arg to be passed
+        #Do something
+        result = func(*args, **kwargs)
+        #Do something else
+        return result
+    return wrapper
 
+@my_decorator
+#def print_name():
+#    print('Clyde')
 
+#print_name = start_end_decorator(print_name)
+
+#print_name()
+
+def add5(x):
+    return x + 5
+
+result = add5(10)
+print(result)
+
+print(help(add5))
+print(add5.__name__)
