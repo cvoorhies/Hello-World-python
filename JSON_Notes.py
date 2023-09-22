@@ -92,4 +92,42 @@ print(mylist)
 
 import secrets # has only 3 functions, used for passwords, tolkens, or account verifications, etc.
 
+a = secrets.randbelow(10) #does not include 10
+print(a)
+
+a = secrets.randbits(4) #dgive randome bianary values between 0000 and 1111, returns an int
+print(a)
+
+mylist = list("ABCDEFGH")
+a = secrets.choice(mylist) #dgive randome bianary values between 0000 and 1111, returns an int
+print(a)
+
+#use the numby to gennerate random arrays of various depths
+import numpy as np
+
+a = np.random.rand(3) # creates a 1d 3 element array
+print(a)
+
+a = np.random.rand(3, 3) # creates a 3d 3 element array
+print(a)
+
+a = np.random.randint(0, 10, (3,4)) # creates a 3d 3 element int array ()=tuplel
+print(a)
+
+arr = np.array([[1,2,3], [4,5,6], [7,8,9]])
+print(arr)
+np.random.shuffle(arr) # shuffles only in the first axis
+print(arr)
+
+np.random.seed(1)
+print(np.random.rand(3,3))
+
+np.random.seed(1)
+print(np.random.rand(3,3))# generates the same random numb array as the first
+
+
+
+
+
+
 
