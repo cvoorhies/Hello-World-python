@@ -20,9 +20,9 @@ for i in range(num_processes):
 for p in processes:
     p.start()
 
-# join
+# join - means to wait for a process to finish and block the main thread
 for p in processes:
-    p.join() # means to wait for a process to finish and block the main thread
+    p.join()
 
 
 print('end main')
