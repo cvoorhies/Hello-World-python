@@ -182,3 +182,147 @@ def greet(name):
     print(f'Hello {name}')
 
 greet('Clyde')
+
+
+## Stack decorators ontop of each other, or nested decorators
+
+def start_end_decorator(func):
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs): # *args, **kwargs allows an unlimited amount of arg to be passed
+        print('Start functools wrapper')
+        result = func(*args, **kwargs)
+        print('End functools wrapper')
+        return result
+    return wrapper
+
+def debug(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        args_repr = [repr(a) for a in args]
+        kwargs_repr = [f"{k}={v!r}" for k, v in kwargs.items()]
+        signaure = ", ".join(args_repr + kwargs_repr)
+        print('Start debug wrapper')
+        print(f"Calling {func.__name__}({signaure})")
+        result = func(*args, **kwargs)
+        print(f"{func.__name__!r} return {result!r}")
+        print('End debug wrapper')
+        return result
+    return wrapper
+
+@debug
+@start_end_decorator
+def say_hello(name):
+    greeting = f'Hello {name}'
+    print(greeting)
+    return greeting
+
+say_hello("Clyde")
+
+### Class decorators, used to maintain and update a state
+
+class CountCalls:
+
+    def __init__(self, func):
+        self.func = func
+        self.num_calls = 0
+
+    def __call__(self, *args, **kwargs):
+        self.num_calls += 1
+        print(f'This is executed {self.num_calls} times')
+        return self.func(*args, **kwargs)
+
+
+
+@CountCalls
+def say_hello():
+    print('Hello World')
+
+say_hello()
+say_hello()
+say_hello()
+say_hello()
+
+# Typical use cases of decorators
+
+"""
+Impliment a timer decorator to calculate the execution time of a function
+use debug: to print out more information about a called function and its arguments
+use a check decorator to check if the arguments fulfill some requirements and the depth 
+the behavior accordingly
+register functions, like plug ins, with decorators, you can cache the return values
+you can add information or update the state generators or functions that return 
+an object that can be iterated
+"""
+
+## Generators
+"""
+Generators are functions that return an object that can be iterated over. And the
+special thing is that they generate the items inside the object lazily,  which means
+they generate the items only one at a time and only when you ask for it. 
+And because of this,  they are much more memory efficient than other sequence objects
+when you have to deal with large data sets. They are a powerful advanced python
+technique. 
+"""
+
+def mygenerator():
+    yield 1
+    yield 2
+    yield 3
+
+g = mygenerator()
+print(g)
+
+"""
+for i in g:
+    print(i)
+"""
+
+"""value = next(g)
+print(value)
+
+value = next(g)
+print(value)
+
+value = next(g)
+print(value)
+
+"""
+
+#print(sum(g))
+
+print(sorted(g))
+
+def countdown(num):
+    print('Starting')
+    while num > 0:
+        yield num
+        num -= 1
+
+cd = countdown(4)
+
+value = next(cd)
+print(value)
+
+print(next(cd))
+print(next(cd))
+print(next(cd))
+
+# Generators are very memory efficient, they save a lot of memore when working
+# with large data
+
+def firstn(n):
+    nums = []
+    num = 0
+    while num < n:
+        nums.append(num)
+        num += 1
+    return nums
+
+print(firstn(10))
+print(sum(firstn(10)))
+
+
+
+
+
