@@ -164,3 +164,21 @@ print(result)
 
 print(help(add5))
 print(add5.__name__)
+
+
+### another example of a decorator
+def repeat(num_times):
+    def decorator_repeat(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            for _ in range(num_times):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator_repeat
+
+@repeat(num_times=4)
+def greet(name):
+    print(f'Hello {name}')
+
+greet('Clyde')
