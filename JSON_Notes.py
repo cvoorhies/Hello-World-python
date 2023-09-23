@@ -311,6 +311,8 @@ print(next(cd))
 # Generators are very memory efficient, they save a lot of memore when working
 # with large data
 
+
+import sys
 def firstn(n):
     nums = []
     num = 0
@@ -319,10 +321,141 @@ def firstn(n):
         num += 1
     return nums
 
-print(firstn(10))
-print(sum(firstn(10)))
+def firstn_generator(n):
+    num = 0
+    while num < n:
+        yield num
+        num += 1
 
 
+#print(firstn(10))
+print(sys.getsizeof(firstn(100000)))
+print(sys.getsizeof(firstn_generator(100000)))
 
+def fibonacci(limit):
+    # 0,1,1, 2, 3, 5, 8, 13...
+    a, b = 0, 1
+    while a < limit:
+        yield a
+        a, b = b, a + b
+
+
+fib = fibonacci(35) # doesn't include the value indicated
+for i in fib:
+    print(i)
+
+
+"""
+Generator expressions: written the same way, like list comprehensions, but with
+parentheses instead of square bracket. This is a very simple and shortcut to immplement
+the generator expression.
+
+"""
+mygenerator2 = (i for i in range(10) if i % 2 == 0)
+#for i in mygenerator2:
+#    print(i)
+    
+print(list(mygenerator2))
+
+# list comprehension:
+mylist2 = [i for i in range(10) if i % 2 == 0]
+print(mylist2)
+
+print(sys.getsizeof(mygenerator2))
+print(sys.getsizeof(mylist2))
+
+"""
+Threading vs multiprocessing: Threading and multiprocessing, you can run code in 
+parallel and speed up your code. The differences between a process and a thread, 
+the advantages and disadvantages of both how and why threads are limited by the Gil
+and how we can easily use the built in threading and multiprocessing module to create
+and run multiple threads or processes.
+"""
+# The difference between a process and a thread. So a process is an instance of a 
+# program.
+"""
+so for example,  if I'm running on Firefox browser,  then this is and instnce of a
+program. So for if I'm running one Firefox browser,  then this is one process. Or if
+I'm running one Python interpreter, then this is one process. And a thread on the 
+other hand is an entity within a process. So a process can have multiple threads
+inside processes that takes advantage of multiple CPUs and cores. So you can execute
+your code on multiple CPUs and parallel processes have a separate memory space. So
+Memory is not shared,  but between processes and they are great for CPU bound processing.
+So this means for example, if you have a large amount of data and have to do a lot
+of expensive computations for them, then with multiprocessing, you can process the
+data on different CPUs and this way speed up your code. New process is started
+independently from other processes and processes are easily interruptible and killable
+There is one GIL for each process. So this avoinds the Gil limitation. * Gil, Global
+interpreter lock.* 
+There are some disadvantages. A process is heavyweight. It takes a lot of memory
+and starting a process is slower than starting a thread. Since processes have a separate 
+memory space, memory sharing is not so easy. So the interprocess communication is more 
+complicated.
+
+A thread is an entity within a process that can be scheduled for execution. It's also
+known as a lightweight process. A process can spawn multiple threads. So all threads
+within a process share the same memory. Starting a thread is faster than starting a 
+process. They are great for IO bound tasks. So this means input output tasks. For
+example when your program has to talk to slow devices, like a hard drive or a network
+connection, then with threading, your program can use the time waiting for these devices
+and then intelligently switch to other thread and do other processing. So this is how 
+you can speed up code with threading. 
+
+But on the other hand, threading is limited by the Gil. So the Gil allows only one thread
+at a time. So there is no actual parallel computation in multithreading. So threading 
+has no effect for CPU bound tasks. And they are not interuptable and killable. So
+be careful with memory leaks here. Since threads share the same memory you have to be
+careful with race conditions. A race condition occurs when two or more threads want to
+modify the same variable at the same time. So then this can easily cause bugs or crashes
+
+GIL : Global interpreter Lock. This is a lock in python that allows only one thread
+at a time to execute. This is very controversial in the python community. But why is
+it needed? This is because in C Python, so C Python is the reference python implementation
+that you get when you download and install python fro python.org.
+So the GIL is needed because in C Python, there is a memory management that is not 
+thread safe. So in C Python,  there is a technique that is called reference counting
+that is used for memory management. And this means that objects created in Python have
+a reference count variable that keeps track of the number of references that point to
+the object. When this cound reaches zero, the memory occupied by the object can be 
+released. The problem now in multi threading is that this reference count variable 
+needs protection from race conditions where two threads increase or decrease the 
+value simultaneously. So if this happens it can cause leaked memory that is never released
+Or it can incorrectly release the memory while a reference to that object still exists.
+So this is the reason why they introduced the GIL. A couple of ways to avoid the GIL
+if you want to use parallel computing is to use multi processing. Or you can use a
+different fre threaded Python implementation and not C Python. For example, Chai Thon
+or iron Python. Or you can use Python as a wrapper for third party libraries. Thi is
+the way it works in NumPy or the scipy modules. So they are basically just wrappers
+in Python, that then calls code that is executed in C. 
+"""
+
+from multiprocessing import Process
+import os
+import time
+
+def square_numbers():
+    for i in range(100):
+        i * i
+        time.sleep(0.1)
+
+
+processes = []
+num_processes = os.cpu_count()
+
+# Create processes
+for i in range(num_processes):
+    p = Process(target=square_numbers)
+    processes.append(p)
+
+# Start
+for p in processes:
+    p.start()
+
+# join
+for p in processes:
+    p.join() # means to wait for a process to finish and block the main thread
+
+
+print('end main')
 
 
