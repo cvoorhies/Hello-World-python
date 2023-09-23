@@ -428,34 +428,3 @@ or iron Python. Or you can use Python as a wrapper for third party libraries. Th
 the way it works in NumPy or the scipy modules. So they are basically just wrappers
 in Python, that then calls code that is executed in C. 
 """
-
-from multiprocessing import Process
-import os
-import time
-
-def square_numbers():
-    for i in range(100):
-        i * i
-        time.sleep(0.1)
-
-
-processes = []
-num_processes = os.cpu_count()
-
-# Create processes
-for i in range(num_processes):
-    p = Process(target=square_numbers)
-    processes.append(p)
-
-# Start
-for p in processes:
-    p.start()
-
-# join
-for p in processes:
-    p.join() # means to wait for a process to finish and block the main thread
-
-
-print('end main')
-
-
