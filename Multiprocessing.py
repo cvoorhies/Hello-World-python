@@ -29,6 +29,11 @@ if __name__ == '__main__':
 print(os.cpu_count())
 print('end main')
 #########
+
+from multiprocessing import Process
+import os
+import time
+
 from threading import Thread
 def square_numbers():
     for i in range(10):
@@ -40,7 +45,7 @@ threads = []
 num_threads = 10
 
 
-# Create processes
+# Create threads
 for i in range(num_threads):
     t = Thread(target=square_numbers)
     threads.append(t)
@@ -50,7 +55,7 @@ if __name__ == '__main__':
     for t in threads:
         t.start()
 
-    # join - means to wait for a process to finish and block the main thread
+    # join 
     for t in threads:
         t.join()
 
