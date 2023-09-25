@@ -30,27 +30,24 @@ print(os.cpu_count())
 print('end main')
 #########
 
-from multiprocessing import Process
-import os
-import time
-
 from threading import Thread
+
 def square_numbers():
-    for i in range(10):
-        print(i * i)
+    for i in range(100):
+        i * i
         time.sleep(0.1)
 
-
-threads = []
-num_threads = 10
+if __name__ == '__main__':
+    threads = []
+    num_threads = 10
 
 
 # Create threads
-for i in range(num_threads):
-    t = Thread(target=square_numbers)
-    threads.append(t)
+    for i in range(num_threads):
+        t = Thread(target=square_numbers)
+        threads.append(t)
+        
 
-if __name__ == '__main__':
     # Start
     for t in threads:
         t.start()
@@ -59,5 +56,5 @@ if __name__ == '__main__':
     for t in threads:
         t.join()
 
-#print(os.cpu_count())
-print('end main')
+    #print(os.cpu_count())
+    print('end main')
