@@ -67,3 +67,47 @@ def foo5(a, b, c):
     
 my_dict= {'a': 5, 'b': 6, 'c': 7} # Key words must match args in function.
 foo5(**my_dict)
+
+
+"""Passing parameters, call by value or call by reference
+The parameter parsed in is actually a reference to an object, but the reference
+is passed by value.
+There is a difference between mutable and immutable data types.
+""" 
+"""
+Astrisk Operator
+It can be used for multiple differnt cases like multiplication and power operations,
+the creation of lists or tuples, with repeated eleents, for args, kwargs, and keyword
+only parameters for unpacking lists, tuples, or dictionaries into function arguments, 
+for unpacking containers and for merging containers into a list or merging two
+dictionaries.
+
+"""
+result = 2 ** 4 #double * is for power operations
+print(result)
+
+zeros = [0] * 10 #for filling a list
+print(zeros)
+
+
+# used to unpack lists and tuples. * result is always going to be a list.
+numb_list = [1, 2, 3, 4, 5, 6]
+beginning, *middle, secondlast, last = numb_list
+print(beginning)
+print(middle)
+print(secondlast)
+print(last)
+
+# can use * operator to merge iterables into a list
+my_tuple = (1, 2, 3)
+my_list = [4, 5, 6]
+my_set = {7, 8, 9}
+
+new_list = [*my_tuple, *my_list, *my_set]
+print(new_list)
+
+dict_a = {'a': 1, 'b': 2}
+dict_b = {'c': 3, 'd': 4}
+
+my_new_dict = {**dict_a, **dict_b}
+print(my_new_dict)
