@@ -164,9 +164,23 @@ class ManagedFile:
     def __exit__(self, exc_type, exc_value, exc_traceback):
         if self.file:
             self.file.close()
+            print('exc: ', exc_type, exc_value)
             print('exit')
 
 with ManagedFile('note.txt') as file:
     print('do something here')
     file.write('some todoos....')
-        
+
+# opening file with a function:
+from contextlib import contextmanager
+
+@contextmanager # the decorator
+def open_managed_file(filename):
+    f = open(filename, 'w')
+    try:
+      yield f # This is the generator
+    finally:
+      f.close()
+
+with open_managed_file('anotherNoteFile.txt') as f:
+    f.write('Some text inside the file...')
