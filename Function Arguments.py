@@ -111,3 +111,62 @@ dict_b = {'c': 3, 'd': 4}
 
 my_new_dict = {**dict_a, **dict_b}
 print(my_new_dict)
+
+#Deep vs Shallow copying. Shallow is just a regular copy of the item
+#Deep copy is for multi layers of objects
+import copy
+org =[[1, 2, 3, 4], [5, 6, 7, 8, 9]]
+cpy = copy.deepcopy(org) # if you use just copy it copies the reference not the actual object
+cpy[0][1] = -10
+
+print(cpy)
+print(org)
+
+# Context Managers
+"""
+Great tool for resource managment, they allow you to allocate and release resources
+precisely when you want to. A well know example is the with open statement.
+"""
+# open a file 
+with open('notes.txt', 'w') as file: # this is the recommened way to open files.
+    file.write('Some todo list....')
+#Context manager with automaticlly close the file once code is outside the with.
+# to free up resources correctly:
+
+file = open('notes.txt', 'a')
+try:
+   file.write('some todo lists...')
+finally:
+    file.close()
+
+from threading import Lock
+lock = Lock()
+
+lock.acquire()
+###--- some threading code. 
+lock.release()# if you forget this part the program won't run any further.
+
+#a better and cleaner way to do this that will automatically release is to use:
+with lock:
+    #.. some threading code
+    print('this is the lock code')
+
+class ManagedFile:
+    def __init__(self, filename):
+        print('init')
+        self.filename = filename
+    
+    def __enter__(self):
+        print('enter')
+        self.file = open(self.filename, 'w')
+        return self.file
+    
+    def __exit__(self, exc_type, exc_value, exc_traceback):
+        if self.file:
+            self.file.close()
+            print('exit')
+
+with ManagedFile('note.txt') as file:
+    print('do something here')
+    file.write('some todoos....')
+        
