@@ -9,7 +9,7 @@ x='Clyde'
 print(x)
 print(0 == 0.0)
 print(0 is 0.0)
-print(0 is not 0.0)
+print(0 != 0.0)
 
 #This is how to setup constants in python
 from enum import Enum
