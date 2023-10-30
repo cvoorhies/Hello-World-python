@@ -36,10 +36,10 @@ class ATE_test:
 
     print('*IDN? returned: %s' % idn.rstrip('\n'))
 
-    """# Close the connection to the instrument
+    # Close the connection to the instrument
     session.close()
     resourceManager.close()
-"""
+    
     print('Done.')
 
     def exceptionHandler(exception):
