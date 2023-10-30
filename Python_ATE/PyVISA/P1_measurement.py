@@ -15,5 +15,10 @@ import pyvisa
 # get sig gen address
 addr_SG = 'The address of the sig gen in use'
 addr_pm = 'The address of the power meter in use'
-rm_sig_gen = visa.SigGen(addr_SG)
-rm_pm = visa.PM(addr_pm)
+rm_sig_gen = pyvisa.SigGen(addr_SG)
+mp_sig_gen = rm_sig_gen.open('ASRL/dev/ttyUSB0')
+mp_sig_gen.baud_rate = 115200
+
+rm_pm = pyvisa.PM(addr_pm)
+mp_pm = rm_pm.open('ASRL/dev/ttyUSB0')
+mp_pm.baud_rate = 11520
