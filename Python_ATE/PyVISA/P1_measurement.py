@@ -20,6 +20,7 @@ addr_pm = 'The address of the power meter in use'
 rm_sig_gen = pyvisa.SigGen(addr_SG)
 mp_sig_gen = rm_sig_gen.open('ASRL/dev/ttyUSB0')
 mp_sig_gen.baud_rate = 115200
+print(mp_sig_gen.query("*IDN?"))
 
 rm_pm = pyvisa.PM(addr_pm)
 mp_pm = rm_pm.open('ASRL/dev/ttyUSB0')
