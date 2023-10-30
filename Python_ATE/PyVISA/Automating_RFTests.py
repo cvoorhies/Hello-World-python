@@ -223,11 +223,6 @@ class VNA(ATE_test):
 class SpecA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
-
-
-    # Close the connection to the instrument
-    self.session.close()
-    self.resourceManager.close()
     pass
 
 class SigGen(ATE_test):
