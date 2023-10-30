@@ -8,7 +8,7 @@
 #
 ################################################################################
 
-import visa
+import pyvisa
 import sys
 
 class ATE_test:

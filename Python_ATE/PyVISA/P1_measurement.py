@@ -11,7 +11,7 @@ return P1 measurement and sig gen setting.
 
 """
 import Automating_RFTests
-import visa
+import pyvisa
 # get sig gen address
 addr_SG = 'The address of the sig gen in use'
 addr_pm = 'The address of the power meter in use'
