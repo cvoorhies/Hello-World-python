@@ -14,9 +14,8 @@ import sys
 class ATE_test:
 
     def __init__(self, Visa_Add):
-        pass
-    # Change this variable to the address of your instrument
-    VISA_ADDRESS = Visa_Add
+        # Change this variable to the address of your instrument
+        self.VISA_ADDRESS = Visa_Add
 
     try:
         # Create a connection (session) to the instrument
@@ -39,7 +38,7 @@ class ATE_test:
     # Close the connection to the instrument
     session.close()
     resourceManager.close()
-    
+
     print('Done.')
 
     def exceptionHandler(exception):
