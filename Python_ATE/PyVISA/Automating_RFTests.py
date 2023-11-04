@@ -19,9 +19,9 @@ class ATE_test:
 
     try:
         # Create a connection (session) to the instrument
-        resourceManager = visa.ResourceManager()
+        resourceManager = pyvisa.ResourceManager('@py')
         session = resourceManager.open_resource(VISA_ADDRESS)
-    except visa.Error as ex:
+    except pyvisa.Error as ex:
         print('Couldn\'t connect to \'%s\', exiting now...' % VISA_ADDRESS)
         sys.exit()
 
@@ -57,11 +57,11 @@ class ATE_test:
     #
     # First we'll provide an invalid address and see what error we get
 
-    resourceManager = visa.ResourceManager()
+    resourceManager = pyvisa.ResourceManager('@py')
 
     try:
         session = resourceManager.open_resource("BAD ADDRESS")
-    except visa.VisaIOError as ex:
+    except pyvisa.VisaIOError as ex:
         print('VISA ERROR - An error has occurred!\n')
 
         # To get more specific information about the exception, we can check what kind of error it is and
@@ -125,7 +125,7 @@ class ATE_test:
 
     def find(searchString):
 
-        resourceManager = visa.ResourceManager()
+        resourceManager = pyvisa.ResourceManager('@py')
 
         print('Find with search string \'%s\':' % searchString)
         devices = resourceManager.list_resources(searchString)
@@ -184,7 +184,7 @@ class ATE_test:
 
     try:
         # Create a connection (session) to the serial instrument
-        resourceManager = visa.ResourceManager()
+        resourceManager = pyvisa.ResourceManager('@py')
         session = resourceManager.open_resource(VISA_ADDRESS)
 
         # For Serial and TCP/IP socket connections enable the read Termination Character, or read's will timeout
@@ -193,10 +193,10 @@ class ATE_test:
 
         # If you've setup the serial port settings in Connection Expert, you can remove this section.
         # Otherwise, set your connection parameters
-        session.set_visa_attribute(visa.constants.VI_ATTR_ASRL_BAUD, 9600)
-        session.set_visa_attribute(visa.constants.VI_ATTR_ASRL_DATA_BITS, 8)
-        session.set_visa_attribute(visa.constants.VI_ATTR_ASRL_PARITY, visa.constants.VI_ASRL_PAR_NONE)
-        session.set_visa_attribute(visa.constants.VI_ATTR_ASRL_FLOW_CNTRL, visa.constants.VI_ASRL_FLOW_DTR_DSR)
+        session.set_visa_attribute(pyvisa.constants.VI_ATTR_ASRL_BAUD, 9600)
+        session.set_visa_attribute(pyvisa.constants.VI_ATTR_ASRL_DATA_BITS, 8)
+        session.set_visa_attribute(pyvisa.constants.VI_ATTR_ASRL_PARITY, visa.constants.VI_ASRL_PAR_NONE)
+        session.set_visa_attribute(pyvisa.constants.VI_ATTR_ASRL_FLOW_CNTRL, visa.constants.VI_ASRL_FLOW_DTR_DSR)
 
         # Send the *IDN? and read the response
         session.write('*IDN?')
@@ -208,7 +208,7 @@ class ATE_test:
         session.close()
         resourceManager.close()
 
-    except visa.Error as ex:
+    except pyvisa.Error as ex:
         print('An error occurred: %s' % ex)
 
     print('Done.')
@@ -217,18 +217,22 @@ class ATE_test:
 class VNA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
+        self.address = args
     pass
 
 class SpecA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
+        self.address = args
     pass
 
 class SigGen(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
+        self.address = args
     pass
 class Pm(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
+        self.address = args
     pass
