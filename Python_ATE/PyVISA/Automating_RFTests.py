@@ -231,6 +231,7 @@ class VNA(ATE_test):
             except Exception as e:
                 print(e)
             this_resource.close()
+    
     pass
 
 class SpecA(ATE_test):

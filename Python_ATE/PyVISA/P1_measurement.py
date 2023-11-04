@@ -26,9 +26,11 @@ mp_sig_gen.baud_rate = 115200
 print(mp_sig_gen.query("*IDN?"))
 
 rm_pm = pyvisa.PM(addr_pm)
-mp_pm = rm_pm.open('ASRL/dev/ttyUSB0')
-mp_pm.baud_rate = 11520
-print(mp_pm.query("*IDN?"))
+PM = rm_pm.open_resource('TCPIP::192.168.12.24::INSTR') # connects resource manager to the LAN port
+#mp_pm = rm_pm.open('ASRL/dev/ttyUSB0')
+#mp_pm.baud_rate = 11520
+PM.baud_rate = 11520
+print(PM.query("*IDN?"))
 while True:
     print(Quantity(mp_pm.query('MEAS?').strip(), "Ohms"))
     sleep(1)
