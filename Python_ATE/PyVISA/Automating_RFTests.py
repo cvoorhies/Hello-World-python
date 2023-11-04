@@ -213,11 +213,24 @@ class ATE_test:
 
     print('Done.')
 
-
+#Creating an instance of itself so that it can be called and used 
+#in the measurement files.
 class VNA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
+    def connection():
+        instrument = self.resourceManager.list_resources()
+        for inst in instrument:
+            if(inst.startswith('USB')):
+                this_resource = rm.open_resource(inst)
+                this_resource.query_delay = 0.1 # some things like a pause
+                print(f"\nTrying {inst}")
+            try:
+                print(this_resource.query("*IDN?"),strip())
+            except Exception as e:
+                print(e)
+            this_resource.close()
     pass
 
 class SpecA(ATE_test):
