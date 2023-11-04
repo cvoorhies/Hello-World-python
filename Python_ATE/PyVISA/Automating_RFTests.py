@@ -220,8 +220,8 @@ class VNA(ATE_test):
         super().__init__(self, args)
         self.address = args
     def connection():
-        instrument = self.resourceManager.list_resources()
-        for inst in instrument:
+        VNA = self.resourceManager.list_resources()
+        for inst in VNA:
             if(inst.startswith('USB')):
                 this_resource = rm.open_resource(inst)
                 this_resource.query_delay = 0.1 # some things like a pause
@@ -238,15 +238,51 @@ class SpecA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
+    def connection():
+        SA = self.resourceManager.list_resources()
+        for inst in SA:
+            if(inst.startswith('USB')):
+                this_resource = rm.open_resource(inst)
+                this_resource.query_delay = 0.1 # some things like a pause
+                print(f"\nTrying {inst}")
+            try:
+                print(this_resource.query("*IDN?"),strip())
+            except Exception as e:
+                print(e)
+            this_resource.close()
     pass
 
 class SigGen(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
+    def connection():
+        SG = self.resourceManager.list_resources()
+        for inst in SG:
+            if(inst.startswith('USB')):
+                this_resource = rm.open_resource(inst)
+                this_resource.query_delay = 0.1 # some things like a pause
+                print(f"\nTrying {inst}")
+            try:
+                print(this_resource.query("*IDN?"),strip())
+            except Exception as e:
+                print(e)
+            this_resource.close()
     pass
 class Pm(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
+    def connection():
+        PM = self.resourceManager.list_resources()
+        for inst in PM:
+            if(inst.startswith('USB')):
+                this_resource = rm.open_resource(inst)
+                this_resource.query_delay = 0.1 # some things like a pause
+                print(f"\nTrying {inst}")
+            try:
+                print(this_resource.query("*IDN?"),strip())
+            except Exception as e:
+                print(e)
+            this_resource.close()
     pass
