@@ -20,12 +20,12 @@ addr_pm = 'The address of the power meter in use'
 # Example for ethernet pwr_supply = rm.open_resource('TCPIP::192.168.128.24::INSTR')
 # to get a list of stuff on the net use rm.list_resources()
 
-rm_sig_gen = pyvisa.SigGen(addr_SG)
-mp_sig_gen = rm_sig_gen.open('ASRL/dev/ttyUSB0')
+rm_sig_gen = pyvisa.SGconnection(addr_SG)
+"""mp_sig_gen = rm_sig_gen.open('ASRL/dev/ttyUSB0')
 mp_sig_gen.baud_rate = 115200
-print(mp_sig_gen.query("*IDN?"))
+print(mp_sig_gen.query("*IDN?"))"""
 
-rm_pm = pyvisa.PM(addr_pm)
+rm_pm = pyvisa.PMconnection(addr_pm)
 PM = rm_pm.open_resource('TCPIP::192.168.12.24::INSTR') # connects resource manager to the LAN port
 #mp_pm = rm_pm.open('ASRL/dev/ttyUSB0')
 #mp_pm.baud_rate = 11520

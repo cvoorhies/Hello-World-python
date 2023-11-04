@@ -219,7 +219,7 @@ class VNA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    def connection():
+    def VNAconnection():
         VNA = self.resourceManager.list_resources()
         for inst in VNA:
             if(inst.startswith('USB')):
@@ -238,7 +238,7 @@ class SpecA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    def connection():
+    def SAconnection():
         SA = self.resourceManager.list_resources()
         for inst in SA:
             if(inst.startswith('USB')):
@@ -256,7 +256,7 @@ class SigGen(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    def connection():
+    def SGconnection():
         SG = self.resourceManager.list_resources()
         for inst in SG:
             if(inst.startswith('USB')):
@@ -273,7 +273,7 @@ class Pm(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    def connection():
+    def PMconnection():
         PM = self.resourceManager.list_resources()
         for inst in PM:
             if(inst.startswith('USB')):
