@@ -34,4 +34,18 @@ print(PM.query("*IDN?"))
 while True:
     print(Quantity(mp_pm.query('MEAS?').strip(), "Ohms"))
     sleep(1)
+    # Connect to the Spectrum Analyzer
+    sa = pyvisa.instrument("GPIB0::23")
 
+    # Set the frequency range
+    sa.write("SENS:FREQ:START 100MHz")
+    sa.write("SENS:FREQ:STOP 1GHz")
+
+    # Perform a single sweep, need in while loop to make measurement
+    sa.write("INIT:IMM")
+
+    # Get the trace data
+    trace_data = sa.query("TRACE:DATA?")
+
+    # Close the connection
+    sa.close()
