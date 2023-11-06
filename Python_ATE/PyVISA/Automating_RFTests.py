@@ -238,18 +238,6 @@ class SpecA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    """def SAconnection():
-        SA = self.resourceManager.list_resources()
-        for inst in SA:
-            if(inst.startswith('USB')):
-                this_resource = rm.open_resource(inst)
-                this_resource.query_delay = 0.1 # some things like a pause
-                print(f"\nTrying {inst}")
-            try:
-                print(this_resource.query("*IDN?"),strip())
-            except Exception as e:
-                print(e)
-            this_resource.close()"""
     sa = pyvisa.instrument("GPIB0::23")
 
     # Set the frequency range
@@ -261,6 +249,8 @@ class SpecA(ATE_test):
 
     # Get the trace data
     trace_data = sa.query("TRACE:DATA?")
+
+    sa.close()
 
 class SigGen(ATE_test):
     def __init__(self, args):
