@@ -61,7 +61,8 @@ while(powerdelta <=9):
     powerdelta = power - lastPwrdg
     pwrSetVar += 10
 
-power -= 10
+power -= 10  # Set to a 10 db backoff
+powerdelta = 10
 pwset = f'SOUR:POW {power}'
 sg.write(pwset)
 sleep(1)
