@@ -21,8 +21,8 @@ from time import sleep
 # to get a list of stuff on the net use rm.list_resources()
 
 # Connect to the power meter and signal generator
-pm = pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
-sg = pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
+pm = Pm('GPIB0::16::INSTR') #pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
+sg = SigGen('GPIB0::16::INSTR') #pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
 #while True: # Need a condition to run this in ?? steps
 print(Quantity(mp_pm.query('MEAS?').strip(), "Ohms"))
 sleep(1)
@@ -47,6 +47,20 @@ power = pm.query('MEAS:POW?')
 # Set the power to -10 dBm
 sg.write('SOUR:POW -10')
 sleep(1)
+
+powerdelta = 10
+lastPwrdg = 0
+pwrSetVar = 0
+while(powerdelta <=9):
+    lastPwrdg = pm.query('MEAS:POW?') # expect reading to start at -10dbm, then increase by 10.
+    
+    pwset = {f"SOUR:POW %pwrSetVar"}
+    sg.write(pwset)
+    sleep(1)
+    power = pm.query('MEAS:POW?') # expect reading to be 0dbm on first round. increment by 10 after.
+    powerdelta = power - lastPwrdg
+    pwrSetVar += 10
+
 # Get the power measurement
 power = pm.query('MEAS:POW?') # expect reading to be -10dbm
 

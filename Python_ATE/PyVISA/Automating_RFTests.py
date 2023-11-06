@@ -272,26 +272,12 @@ class SigGen(ATE_test):
     # Connect to the Signal Generator
     sg = pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
 
-    # Set the frequency to 1 GHz
-    sg.write('SOUR:FREQ 1000000000')
-
-    # Set the power to -10 dBm
-    sg.write('SOUR:POW -10')
-
-    # Turn on the output
-    sg.write('OUTP ON')
-
-    # Generate a signal
-    sg.write('INIT:IMM')
-
-    # Close the connection to the Signal Generator
-    sg.close()
+    
 
 class Pm(ATE_test):
-    def __init__(self, args):
-        super().__init__(self, args)
-        self.address = args
-
+    def __init__(self):
+        super().__init__(self)
+        
     # Connect to the Power Meter
     pm = pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
 
