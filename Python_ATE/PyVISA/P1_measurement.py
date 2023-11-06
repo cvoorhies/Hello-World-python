@@ -61,36 +61,20 @@ while(powerdelta <=9):
     powerdelta = power - lastPwrdg
     pwrSetVar += 10
 
-# Get the power measurement
-power = pm.query('MEAS:POW?') # expect reading to be -10dbm
-
-# Set the power to 20 dBm
-sg.write('SOUR:POW 20')
+power -= 10
+pwset = f'SOUR:POW {power}'
+sg.write(pwset)
 sleep(1)
-# Set the power to 10 dBm 
-sg.write('SOUR:POW 10')
-sleep(1)
-# Get the power measurement, 9db drop?? repeat if not.
-power = pm.query('MEAS:POW?') # expect reading to be 10dbm
-
-# Set the power to 30 dBm
-sg.write('SOUR:POW 30')
-sleep(1)
-# Set the power to 20 dBm
-sg.write('SOUR:POW 20')
-sleep(1)
-# Get the power measurement, 9db drop?? repeat if not.
-power = pm.query('MEAS:POW?') # expect reading to be 20dbm
-
-# Set the power to 40 dBm
-sg.write('SOUR:POW 40')
-sleep(1)
-# Set the power to 30 dBm
-sg.write('SOUR:POW 30')
-sleep(1)
-# Get the power measurement, 9db drop?? repeat if not.
-power = pm.query('MEAS:POW?') # expect reading to be ~29dbm or less.
-
+# repeat after 10 db backoff and increment by 1
+while(powerdelta <=9):
+    lastPwrdg = pm.query('MEAS:POW?') # expect reading to start at -10dbm, then increase by 10.
+    
+    pwset = f'SOUR:POW {pwrSetVar}'
+    sg.write(pwset)
+    sleep(1)
+    power = pm.query('MEAS:POW?') # expect reading to be 0dbm on first round. increment by 10 after.
+    powerdelta = power - lastPwrdg
+    pwrSetVar += 1
 
 # Close the connection to the Signal Generator
 sg.close()
