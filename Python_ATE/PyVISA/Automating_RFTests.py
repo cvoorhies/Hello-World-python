@@ -15,14 +15,14 @@ class ATE_test:
 
     def __init__(self, Visa_Add):
         # Change this variable to the address of your instrument
-        self.VISA_ADDRESS = Visa_Add
+        #self.VISA_ADDRESS = Visa_Add
 
     try:
         # Create a connection (session) to the instrument
         resourceManager = pyvisa.ResourceManager('@py')
-        session = resourceManager.open_resource(VISA_ADDRESS)
+        session = resourceManager.open_resource(Visa_Add)
     except pyvisa.Error as ex:
-        print('Couldn\'t connect to \'%s\', exiting now...' % VISA_ADDRESS)
+        print('Couldn\'t connect to \'%s\', exiting now...' % Visa_Add)
         sys.exit()
 
     # For Serial and TCP/IP socket connections enable the read Termination Character, or read's will timeout
@@ -80,7 +80,7 @@ class ATE_test:
         # Misspell the *IDN? query as *IND?
         try:
             session.write('*IND?')
-        except visa.VisaIOError as ex2:
+        except pyvisa.VisaIOError as ex2:
             print(
                 'VISA ERROR - You\'ll never get here, because the *IND? data will get sent to the instrument successfully, '
                 'it\'s the instrument that won\'t like it.')
@@ -89,7 +89,7 @@ class ATE_test:
         try:
             idnResponse = session.read()
             print('*IDN? returned: %s\n' % idnResponse)
-        except visa.VisaIOError as ex3:
+        except pyvisa.VisaIOError as ex3:
             print('VISA ERROR - The read call will timeout, because the instrument doesn\'t'
                 ' know what to do with the command that we sent it.')
 
@@ -113,7 +113,7 @@ class ATE_test:
 
         print('Done.')
 
-        ################################################################################
+    ################################################################################
     # © Keysight Technologies 2016
     #
     # You have a royalty-free right to use, modify, reproduce and distribute
@@ -238,7 +238,7 @@ class SpecA(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    def SAconnection():
+    """def SAconnection():
         SA = self.resourceManager.list_resources()
         for inst in SA:
             if(inst.startswith('USB')):
@@ -249,40 +249,64 @@ class SpecA(ATE_test):
                 print(this_resource.query("*IDN?"),strip())
             except Exception as e:
                 print(e)
-            this_resource.close()
-    pass
+            this_resource.close()"""
+    sa = pyvisa.instrument("GPIB0::23")
+
+    # Set the frequency range
+    sa.write("SENS:FREQ:START 100MHz")
+    sa.write("SENS:FREQ:STOP 1GHz")
+
+    # Perform a single sweep, need in while loop to make measurement
+    sa.write("INIT:IMM")
+
+    # Get the trace data
+    trace_data = sa.query("TRACE:DATA?")
 
 class SigGen(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    def SGconnection():
+    """def SGconnection():
         SG = self.resourceManager.list_resources()
         for inst in SG:
             if(inst.startswith('USB')):
-                this_resource = rm.open_resource(inst)
+                this_resource = SG.open_resource(inst)
                 this_resource.query_delay = 0.1 # some things like a pause
                 print(f"\nTrying {inst}")
             try:
                 print(this_resource.query("*IDN?"),strip())
             except Exception as e:
                 print(e)
-            this_resource.close()
-    pass
+            this_resource.close()"""
+
+    # Connect to the Signal Generator
+    sg = pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
+
+    # Set the frequency to 1 GHz
+    sg.write('SOUR:FREQ 1000000000')
+
+    # Set the power to -10 dBm
+    sg.write('SOUR:POW -10')
+
+    # Turn on the output
+    sg.write('OUTP ON')
+
+    # Generate a signal
+    sg.write('INIT:IMM')
+
+    # Close the connection to the Signal Generator
+    sg.close()
+
 class Pm(ATE_test):
     def __init__(self, args):
         super().__init__(self, args)
         self.address = args
-    def PMconnection():
-        PM = self.resourceManager.list_resources()
-        for inst in PM:
-            if(inst.startswith('USB')):
-                this_resource = rm.open_resource(inst)
-                this_resource.query_delay = 0.1 # some things like a pause
-                print(f"\nTrying {inst}")
-            try:
-                print(this_resource.query("*IDN?"),strip())
-            except Exception as e:
-                print(e)
-            this_resource.close()
-    pass
+
+    # Connect to the Power Meter
+    pm = pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
+
+    # Get the power measurement
+    power = pm.query('MEAS:POW?')
+
+    # Close the connection to the Power Meter
+    pm.close()

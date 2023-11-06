@@ -31,12 +31,12 @@ PM = rm_pm.open_resource('TCPIP::192.168.12.24::INSTR') # connects resource mana
 #mp_pm.baud_rate = 11520
 PM.baud_rate = 11520
 print(PM.query("*IDN?"))
+# Connect to the Spectrum Analyzer
+sa = pyvisa.instrument("GPIB0::23")
 while True:
     print(Quantity(mp_pm.query('MEAS?').strip(), "Ohms"))
     sleep(1)
-    # Connect to the Spectrum Analyzer
-    sa = pyvisa.instrument("GPIB0::23")
-
+    
     # Set the frequency range
     sa.write("SENS:FREQ:START 100MHz")
     sa.write("SENS:FREQ:STOP 1GHz")
