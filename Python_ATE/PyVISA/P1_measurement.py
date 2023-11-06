@@ -54,7 +54,7 @@ pwrSetVar = 0
 while(powerdelta <=9):
     lastPwrdg = pm.query('MEAS:POW?') # expect reading to start at -10dbm, then increase by 10.
     
-    pwset = {f"SOUR:POW %pwrSetVar"}
+    pwset = f'SOUR:POW {pwrSetVar}'
     sg.write(pwset)
     sleep(1)
     power = pm.query('MEAS:POW?') # expect reading to be 0dbm on first round. increment by 10 after.
