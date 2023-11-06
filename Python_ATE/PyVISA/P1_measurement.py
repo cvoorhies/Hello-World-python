@@ -10,7 +10,7 @@ once P1 found increment in 1 db steps until a 9 db drop (P1) occures.
 return P1 measurement and sig gen setting.
 
 """
-import Automating_RFTests
+#import Automating_RFTests
 import pyvisa
 from quantiphy import Quantity
 from time import sleep
