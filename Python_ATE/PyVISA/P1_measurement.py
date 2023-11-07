@@ -10,15 +10,10 @@ once P1 found increment in 1 db steps until a 9 db drop (P1) occures.
 return P1 measurement and sig gen setting.
 
 """
-#import Automating_RFTests
 import pyvisa
 from quantiphy import Quantity
 from time import sleep
-# get sig gen address
-#addr_SG = 'The address of the sig gen in use'
-#addr_pm = 'The address of the power meter in use'
-# Example for ethernet pwr_supply = rm.open_resource('TCPIP::192.168.128.24::INSTR')
-# to get a list of stuff on the net use rm.list_resources()
+
 
 def P1meas(cntrF):
     # Connect to the power meter and signal generator
