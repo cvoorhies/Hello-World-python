@@ -15,7 +15,7 @@ from quantiphy import Quantity
 from time import sleep
 
 
-def P1meas(cntrF):
+def P1meas(cntrF=1000000000):
     # Connect to the power meter and signal generator
     pm = pyvisa.ResourceManager('GPIB0::16::INSTR') #pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
     sg = pyvisa.ResourceManager('GPIB0::18::INSTR') #pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
