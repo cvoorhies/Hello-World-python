@@ -45,8 +45,8 @@ print("The noise figure of the DUT is {} dB.".format(noise_figure_db))
 
 
 
-import numpy as np
-import visa
+
+import pyvisa
 
 class KeysightNoiseFigureMeter:
   """
@@ -57,7 +57,7 @@ class KeysightNoiseFigureMeter:
   """
 
   def __init__(self, ip_address):
-    self._instrument = visa.instrument(f"TCPIP::{ip_address}::INSTR")
+    self._instrument = pyvisa.instrument(f"TCPIP::{ip_address}::INSTR")
 
   def measure_y_factor(self):
     """
