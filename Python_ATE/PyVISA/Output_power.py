@@ -22,6 +22,9 @@ def P1meas(cntrF=1000000000):
     #while True: # Need a condition to run this in ?? steps
     print(Quantity(mp_pm.query('MEAS?').strip(), "Ohms"))
     sleep(1)
+    lowFreq = 1000000000
+    midFreq = 1500000000
+    highFreq = 2000000000
     # Get the power measurement
     power = pm.query('MEAS:POW?')
 
