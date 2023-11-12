@@ -16,15 +16,14 @@ from time import sleep
 
 
 def P1meas(cntrF=1000000000):
+    freqList[1000000000, 1500000000, 2000000000]
     # Connect to the power meter and signal generator
     pm = pyvisa.ResourceManager('GPIB0::16::INSTR') #pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
     sg = pyvisa.ResourceManager('GPIB0::18::INSTR') #pyvisa.ResourceManager().open_resource('GPIB0::16::INSTR')
     #while True: # Need a condition to run this in ?? steps
     print(Quantity(mp_pm.query('MEAS?').strip(), "Ohms"))
     sleep(1)
-    lowFreq = 1000000000
-    midFreq = 1500000000
-    highFreq = 2000000000
+ 
     # Get the power measurement
     power = pm.query('MEAS:POW?')
 
@@ -78,8 +77,10 @@ def P1meas(cntrF=1000000000):
         pwrSetVar += 1
         
         sg.write('SOUR:POW 1') # set back to p1 then measure
+        print(Quantity(mp_pm.query('MEAS?').strip(), "Ohms"))
         power = pm.query('MEAS:POW?')
         return power
+    
     # Close the connection to the Signal Generator
     sg.close()
 
