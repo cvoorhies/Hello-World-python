@@ -2,6 +2,7 @@ from functionLibrary.FunctLIB import hello
 
 
 print("Hello World!!!")
+hello()
 x = 10
 x = (x+25)/5
 print(x)
