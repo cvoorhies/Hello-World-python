@@ -8,7 +8,7 @@
 #
 ################################################################################
 
-import visa
+import pyvisa
 
 def exceptionHandler(exception):
 
@@ -26,11 +26,11 @@ VISA_ADDRESS = 'Your instruments VISA address goes here!'
 #
 # First we'll provide an invalid address and see what error we get
 
-resourceManager = visa.ResourceManager()
+resourceManager = pyvisa.ResourceManager()
 
 try:
     session = resourceManager.open_resource("BAD ADDRESS")
-except visa.VisaIOError as ex:
+except pyvisa.VisaIOError as ex:
     print('VISA ERROR - An error has occurred!\n')
 
     # To get more specific information about the exception, we can check what kind of error it is and
@@ -49,7 +49,7 @@ session = resourceManager.open_resource(VISA_ADDRESS)
 # Misspell the *IDN? query as *IND?
 try:
     session.write('*IND?')
-except visa.VisaIOError as ex2:
+except pyvisa.VisaIOError as ex2:
     print(
         'VISA ERROR - You\'ll never get here, because the *IND? data will get sent to the instrument successfully, '
         'it\'s the instrument that won\'t like it.')
@@ -58,7 +58,7 @@ except visa.VisaIOError as ex2:
 try:
     idnResponse = session.read()
     print('*IDN? returned: %s\n' % idnResponse)
-except visa.VisaIOError as ex3:
+except pyvisa.VisaIOError as ex3:
     print('VISA ERROR - The read call will timeout, because the instrument doesn\'t'
           ' know what to do with the command that we sent it.')
 
