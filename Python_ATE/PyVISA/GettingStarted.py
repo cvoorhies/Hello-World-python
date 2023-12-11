@@ -8,7 +8,7 @@
 #
 ################################################################################
 
-import visa
+import pyvisa
 import sys
 
 # Change this variable to the address of your instrument
@@ -16,7 +16,7 @@ VISA_ADDRESS = 'Your instruments VISA address goes here!'
 
 try:
     # Create a connection (session) to the instrument
-    resourceManager = visa.ResourceManager()
+    resourceManager = pyvisa.ResourceManager()
     session = resourceManager.open_resource(VISA_ADDRESS)
 except visa.Error as ex:
     print('Couldn\'t connect to \'%s\', exiting now...' % VISA_ADDRESS)
