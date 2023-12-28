@@ -1,5 +1,5 @@
-from functionLibrary.FunctLIB import hello
-
+from functionLibrary.FunctLIB import hello 
+from functionLibrary.FunctLIB import factorial
 
 print("Hello World!!!")
 hello()
@@ -78,15 +78,6 @@ print(result(5))
 # map, filter, reduce used on lists to manipulate the list to a new list
 
 # Recursion
-
-def factorial(n):
-    """ this is a docstring used to annotate what programs are doing and utilize
-    the help to get more information about it.This function will give you the factorial of a number
-    """
-    if n==1 : return 1
-    print(n)
-    return n * factorial(n-1)
-    
 
 print(factorial(8))
 
