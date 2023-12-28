@@ -1,5 +1,6 @@
-from functionLibrary.FunctLIB import hello 
-from functionLibrary.FunctLIB import factorial
+from functionLibrary.FunctLIB import *
+
+
 
 print("Hello World!!!")
 hello()
