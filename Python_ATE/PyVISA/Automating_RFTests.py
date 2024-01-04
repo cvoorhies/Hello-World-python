@@ -66,7 +66,7 @@ class ATE_test:
 
         # To get more specific information about the exception, we can check what kind of error it is and
         # add specific error handling code. In this example, that is done in the exceptionHandler function
-        exceptionHandler(ex)
+    exceptionHandler(ex)
 
         # Part 2:
         #
