@@ -10,7 +10,7 @@ num_PW = int(num_PW)
 len_PW = input('Input the length of your password: ')
 len_PW = int(len_PW)
 
-print('\nHere are your password\(s\):')
+print('\nHere are your password(s):')
 
 for pwd in range(num_PW):
     password = ''
