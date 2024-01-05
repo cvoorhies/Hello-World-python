@@ -1,7 +1,9 @@
-from functionLibrary.FunctLIB import hello
+from functionLibrary.FunctLIB import *
+
 
 
 print("Hello World!!!")
+hello()
 x = 10
 x = (x+25)/5
 print(x)
@@ -57,7 +59,7 @@ class Dog(Animal):
         self.name = name
         self.age = age
 
-    def bark(self): # self always has to be included in methods and intanciation
+    def bark(self): # self always has to be included in methods and instantiation
         print("Woof, Woof!")
 
 rodger = Dog("Rodger", 8)
@@ -78,15 +80,7 @@ print(result(5))
 
 # Recursion
 
-def factorial(n):
-    """ this is a docstring used to annotate what programs are doing and utilize
-    the help to get more information about it.This function will give you the factorial of a number
-    """
-    if n==1 : return 1
-    return n * factorial(n-1)
-    
-
-print(factorial(5))
+print(factorial(8))
 
 
 

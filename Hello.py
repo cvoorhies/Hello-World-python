@@ -9,7 +9,7 @@ x='Clyde'
 print(x)
 print(0 == 0.0)
 print(0 is 0.0)
-print(0 is not 0.0)
+print(0 != 0.0)
 
 #This is how to setup constants in python
 from enum import Enum
@@ -91,3 +91,6 @@ print(factorial(5))
 
 
 print(help(factorial))
+
+print("End of notes")
+hit_enter = input("hit enter to end program")
