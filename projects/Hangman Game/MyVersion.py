@@ -98,7 +98,7 @@ def game():
     #print_hangman(num_Wrong_Guesses)
     while(num_Wrong_Guesses != 6 and num_Guesses != answer_len):
         num_Guesses = showLetters(current_guessed_Letters)
-        print()
+        printLines()
         print('letters guessed so far: ')
         print(current_guessed_Letters)
         print()
@@ -121,13 +121,14 @@ def game():
             print()
             
             
-        if(num_Guesses == answer_len):
+    if(num_Guesses == answer_len):
             print("You Win!!!")
-        else:
-            print('You Lose!!')
+    else:
+            print('Hangman!!! You Lose!!')
 
 yes_no = input('Would you like to play hangman: ')
-if(yes_no == 'yes' or  'y' or 'Y'):
+
+if(yes_no == 'y'):
    game()
 else:
    print('Good Bye')
