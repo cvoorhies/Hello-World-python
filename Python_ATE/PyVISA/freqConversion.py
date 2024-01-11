@@ -1,6 +1,6 @@
 import pyvisa
 
-def set_sweep_mode(address, start_frequency, stop_frequency, sweep_time):
+def set_SG_sweep_mode(address, start_frequency, stop_frequency, sweep_time):
   """
   Sets the sweep mode of a Keysight signal generator.
 
@@ -31,16 +31,9 @@ def set_sweep_mode(address, start_frequency, stop_frequency, sweep_time):
 # Example usage:
 
 # Set the sweep mode of the signal generator to sweep from 1 GHz to 2 GHz in 10 seconds.
-address = "TCPIP::192.168.1.100::INSTR"
-start_frequency = 1e9  # 1 GHz
-stop_frequency = 2e9  # 2 GHz
-sweep_time = 10  # 10 seconds
 
-set_sweep_mode(address, start_frequency, stop_frequency, sweep_time)
 
-import visa
-
-def set_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span):
+def set__SA_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span):
     """
     Sets the sweep mode of a Keysight spectrum analyzer.
 
@@ -53,7 +46,7 @@ def set_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span):
     """
 
     # Connect to the spectrum analyzer.
-    rm = visa.ResourceManager()
+    rm = pyvisa.ResourceManager()
     sa = rm.open_resource(address)
 
     # Set the start frequency.
@@ -77,6 +70,14 @@ def set_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span):
 
 # Example usage:
 
+
+address = "TCPIP::192.168.1.100::INSTR"
+start_frequency = 1e9  # 1 GHz
+stop_frequency = 2e9  # 2 GHz
+sweep_time = 10  # 10 seconds
+
+set_SG_sweep_mode(address, start_frequency, stop_frequency, sweep_time)
+
 # Set the sweep mode of the spectrum analyzer to sweep from 1 GHz to 2 GHz in 10 seconds with a frequency span of 100 MHz.
 address = "TCPIP::192.168.1.100::INSTR"
 start_frequency = 1e9  # 1 GHz
@@ -84,4 +85,5 @@ stop_frequency = 2e9  # 2 GHz
 sweep_time = 10  # 10 seconds
 span = 1e8  # 100 MHz
 
-set_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span)
+set_SA_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span)
+
