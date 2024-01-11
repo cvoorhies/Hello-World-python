@@ -33,7 +33,7 @@ def set_SG_sweep_mode(address, start_frequency, stop_frequency, sweep_time):
 # Set the sweep mode of the signal generator to sweep from 1 GHz to 2 GHz in 10 seconds.
 
 
-def set__SA_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span):
+def set_SA_sweep_mode(address, start_frequency, stop_frequency, sweep_time, span):
     """
     Sets the sweep mode of a Keysight spectrum analyzer.
 
@@ -68,9 +68,6 @@ def set__SA_sweep_mode(address, start_frequency, stop_frequency, sweep_time, spa
     sa.write("INIT:CONT ON")
 
 
-# Example usage:
-
-
 address = "TCPIP::192.168.1.100::INSTR"
 start_frequency = 1e9  # 1 GHz
 stop_frequency = 2e9  # 2 GHz
@@ -79,7 +76,7 @@ sweep_time = 10  # 10 seconds
 set_SG_sweep_mode(address, start_frequency, stop_frequency, sweep_time)
 
 # Set the sweep mode of the spectrum analyzer to sweep from 1 GHz to 2 GHz in 10 seconds with a frequency span of 100 MHz.
-address = "TCPIP::192.168.1.100::INSTR"
+address = "TCPIP::192.168.1.110::INSTR"
 start_frequency = 1e9  # 1 GHz
 stop_frequency = 2e9  # 2 GHz
 sweep_time = 10  # 10 seconds
