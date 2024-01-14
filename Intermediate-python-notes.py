@@ -468,7 +468,7 @@ y = 2
 complex(2*x, 3*y)
 num_complex = complex(x, y)
 num_complex2 = complex(2*x, 3*y)
-num_complex2 = complex(x, -3*y)
+num_complex2 = complex(num_complex2.real, 3*num_complex2.imag)
 num_complex3 = num_complex + num_complex2
 
 print(num_complex, num_complex2, num_complex3) 
