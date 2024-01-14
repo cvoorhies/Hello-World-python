@@ -461,7 +461,13 @@ for _ in range(6):
     logger.info("Hello, world!")
     time.sleep(5)
 """
+import cmath
+x = 5
+y = 2
 
-
+num_complex = complex(x, y)
+num_complex2 = complex(2*x, 3*y)
+num_complex3 = num_complex + num_complex2
+print(num_complex, num_complex2, num_complex3, num_complex.real, num_complex.imag)
 print()
 done = input("are you done looking at results, hit enter")
