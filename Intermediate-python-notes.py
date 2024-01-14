@@ -465,9 +465,12 @@ import cmath
 x = 5
 y = 2
 
+complex(2*x, 3*y)
 num_complex = complex(x, y)
 num_complex2 = complex(2*x, 3*y)
+num_complex2 = complex(x, -3*y)
 num_complex3 = num_complex + num_complex2
-print(num_complex, num_complex2, num_complex3, num_complex.real, num_complex.imag)
+
+print(num_complex, num_complex2, num_complex3) 
 print()
 done = input("are you done looking at results, hit enter")
