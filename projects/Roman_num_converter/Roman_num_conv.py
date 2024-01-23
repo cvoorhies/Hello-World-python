@@ -1,8 +1,3 @@
-
-
-
-#initially reduce the values down to < 10 by each symbol.
-
 symbolDict = { 
     1:"I", 
     5:"V", 
@@ -13,12 +8,15 @@ symbolDict = {
     1000:"M" }
 
 class convertToRoman:
+    """Converts a number from 1 to 9999 into roman numberals
+    """
     #Every 5 change symbol
     #every 4 = new symbol - 1
     #function to loop 1 through 10  
     def __init__(self):
         self.num = self
     def numConverstion(num):
+        
         tempRN = ""
         while num > 0:
             if num >= 1000:
@@ -63,17 +61,13 @@ class convertToRoman:
                 num -= 1
         return tempRN
 
-
-
 numToConvert = input("What number would you like to convert? (1 to 9999) ")
 conv = convertToRoman.numConverstion(int(numToConvert))
 print(conv)
 doAgain = input("Do you want to print another number? y/n ")
 while doAgain == "y":
-    if doAgain == "y":
         numToConvert = input("What number would you like to convert? ")
         conv = convertToRoman.numConverstion(int(numToConvert))
         print(conv)
         doAgain = input("Do you want to print another number? y/n ")
-    else:
-        break
+print(help(convertToRoman()))  
