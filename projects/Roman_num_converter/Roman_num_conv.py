@@ -64,6 +64,16 @@ class convertToRoman:
         return tempRN
 
 
-#conv = convertToRoman()
-conv = convertToRoman.numConverstion(2024)
+
+numToConvert = input("What number would you like to convert? (1 to 9999) ")
+conv = convertToRoman.numConverstion(int(numToConvert))
 print(conv)
+doAgain = input("Do you want to print another number? y/n ")
+while doAgain == "y":
+    if doAgain == "y":
+        numToConvert = input("What number would you like to convert? ")
+        conv = convertToRoman.numConverstion(int(numToConvert))
+        print(conv)
+        doAgain = input("Do you want to print another number? y/n ")
+    else:
+        break
