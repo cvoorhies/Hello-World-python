@@ -10,9 +10,6 @@ symbolDict = {
 class convertToRoman:
     """Converts a number from 1 to 9999 into roman numberals
     """
-    #Every 5 change symbol
-    #every 4 = new symbol - 1
-    #function to loop 1 through 10  
     def __init__(self):
         self.num = self
     def numConverstion(num):
