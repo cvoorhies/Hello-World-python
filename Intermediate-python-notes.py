@@ -474,3 +474,19 @@ num_complex3 = num_complex + num_complex2
 print(num_complex, num_complex2, num_complex3) 
 print()
 done = input("are you done looking at results, hit enter")
+
+import math
+import os
+import random
+import re
+import sys
+
+
+a=5
+b=2
+ans1 = lambda a, b : a + b
+ans2 = lambda a, b : a - b
+ans3 = lambda a, b : a * b
+print(ans1(a, b))
+print(ans2(a, b))
+print(ans3(a, b))
