@@ -74,40 +74,48 @@ def Second_Place(arr):
 
 print(Second_Place(newList))"""
 
-inputList = [['Harry', 37.21], ['Berry', 37.21], ['Tina', 37.2], ['Akriti', 41.0], ['Harsh', 39.0]]
+#MyList = [['Harry', 37.21], ['Berry', -37.21], ['Tina', 37.2], ['Akriti', 41], ['Harsh', 39]]
+#MyList = [['Prashant', 36], ['Pallavi', 40], ['Dheeraj', 40], ['Shivam', 40]]
+#MyList = [['Prashant', 32], ['Pallavi', 36], ['Dheeraj', 39], ['Shivam', 40]]
+MyList = [['Rachel', -50], ['Mawer', -50], ['Sheen', -50], ['Shaheen', 51]]
 
+if(37.2 < 37.21):
+    print(True)
 #print(inputList)
-n = len(inputList)
-i = 0 
-j = 1 
-whoISsecPlace1 = ''
-whoISsecPlace2 = ''
-def Second_Place(arr):
-    lowest = 100.00
-    secPlace1 = arr[0][1]
-    secPlace2 = arr[1][1]
-    max = 0
-    if n < 2:
-        return n
-    else:
-        #Find the lowest value in the list
-        for i in range(n):
-            if lowest > arr[i][1]:
-                lowest = arr[i][1]
-        #print(lowest) 
-        for i in range(n):
-            if max < arr[i][1]:
-                max = arr[i][1]
-        print(lowest, max)
-        #find the second lowest in the list and repeat if there are more than one.       
-        for i in range(n):
-            if arr[i][1] >= lowest and arr[i][1] < max:
-                secPlace1 = arr[i][1]
-                #print(secPlace)
-                whoISsecPlace1 = arr[i][0]
-            if arr[i][1] < secPlace2 and secPlace2 != lowest:
-                secPlace2 = arr[i][1]
-                whoISsecPlace2 = arr[i][0]
-    return secPlace1, whoISsecPlace1, secPlace2, whoISsecPlace2   
+n = len(MyList)
 
-print(Second_Place(inputList))
+j = 1 
+
+def Second_Place(arr):
+    whoISsecPlace1 = 'Default Person1'
+    whoISsecPlace2 = 'Default Person2'
+    lowest = 100
+    secLowest = -100
+    secPlace2 = 0
+    max = 0
+    i = 0 
+    NewList = []
+    for i in range(n):  
+        if (max < arr[i][1]):            
+            max = arr[i][1]
+    for i in range(n):
+        if lowest > arr[i][1]:
+            lowest = arr[i][1]
+    for i in range(n):
+        if lowest < arr[i][1] and secLowest < lowest:
+            secLowest = arr[i][1]
+        
+
+    print(lowest, secLowest, max)
+#find the second lowest in the list and repeat if there are more than one.  
+    for i in range(n):
+        if arr[i][1] == secLowest:
+            NewList.append([arr[i][0]])
+            NewList.sort()
+           
+    for i in range(len(NewList)):
+            whoISsecPlace1 = NewList[i][0]
+            print(whoISsecPlace1) 
+    
+    
+Second_Place(MyList)
