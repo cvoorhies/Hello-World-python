@@ -74,10 +74,10 @@ def Second_Place(arr):
 
 print(Second_Place(newList))"""
 
-#MyList = [['Harry', 37.21], ['Berry', -37.21], ['Tina', 37.2], ['Akriti', 41], ['Harsh', 39]]
+MyList = [['Harry', 37.21], ['Berry', -37.21], ['Tina', 37.2], ['Akriti', 41], ['Harsh', 39]]
 #MyList = [['Prashant', 36], ['Pallavi', 40], ['Dheeraj', 40], ['Shivam', 40]]
 #MyList = [['Prashant', 32], ['Pallavi', 36], ['Dheeraj', 39], ['Shivam', 40]]
-MyList = [['Rachel', -50], ['Mawer', -50], ['Sheen', -50], ['Shaheen', 51]]
+#MyList = [['Rachel', -50], ['Mawer', -50], ['Sheen', -50], ['Shaheen', 51]]
 
 n = len(MyList)
 
@@ -93,14 +93,19 @@ def Second_Place(arr):
     for i in range(n):  
         if (max < arr[i][1]):            
             max = arr[i][1]
+            
     for i in range(n):
         if lowest > arr[i][1]:
             lowest = arr[i][1]
             secLowest = arr[i+1][1]
+            if secLowest == lowest and secLowest < max:
+                    secLowest = max
+            
     for i in range(n):
         if arr[i][1] < max or arr[i][1] > lowest and secLowest != lowest:
             if arr[i][1] > lowest and arr[i][1] < secLowest:
                 secLowest = arr[i][1]
+                
     
     print(lowest, secLowest, max)
 #find the second lowest in the list and repeat if there are more than one.  
