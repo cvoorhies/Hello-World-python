@@ -79,19 +79,14 @@ print(Second_Place(newList))"""
 #MyList = [['Prashant', 32], ['Pallavi', 36], ['Dheeraj', 39], ['Shivam', 40]]
 MyList = [['Rachel', -50], ['Mawer', -50], ['Sheen', -50], ['Shaheen', 51]]
 
-if(37.2 < 37.21):
-    print(True)
-#print(inputList)
 n = len(MyList)
 
 j = 1 
 
 def Second_Place(arr):
     whoISsecPlace1 = 'Default Person1'
-    whoISsecPlace2 = 'Default Person2'
     lowest = 100
-    secLowest = -100
-    secPlace2 = 0
+    secLowest = -1
     max = 0
     i = 0 
     NewList = []
@@ -101,11 +96,12 @@ def Second_Place(arr):
     for i in range(n):
         if lowest > arr[i][1]:
             lowest = arr[i][1]
+            secLowest = arr[i+1][1]
     for i in range(n):
-        if lowest < arr[i][1] and secLowest < lowest:
-            secLowest = arr[i][1]
-        
-
+        if arr[i][1] < max or arr[i][1] > lowest and secLowest != lowest:
+            if arr[i][1] > lowest and arr[i][1] < secLowest:
+                secLowest = arr[i][1]
+    
     print(lowest, secLowest, max)
 #find the second lowest in the list and repeat if there are more than one.  
     for i in range(n):
