@@ -79,7 +79,7 @@ MyList = [['Harry', 37.21], ['Berry', -37.21], ['Tina', 37.2], ['Akriti', 41], [
 #MyList = [['Prashant', 32], ['Pallavi', 36], ['Dheeraj', 39], ['Shivam', 40]]
 #MyList = [['Rachel', -50], ['Mawer', -50], ['Sheen', -50], ['Shaheen', 51]]
 
-n = len(MyList)
+"""n = len(MyList)
 
 j = 1 
 
@@ -119,4 +119,33 @@ def Second_Place(arr):
             print(whoISsecPlace1) 
     
     
-Second_Place(MyList)
+Second_Place(MyList)"""
+
+#n = 3
+#my_Dict = {'Krishna': [67.0, 68.0, 69.0], 'Arjun': [70.0, 98.0, 63.0], 'Malika': [52.0, 56.0, 60.0]}
+
+n = 2
+my_Dict = {'Harsh': [25, 26.5, 28], 'Anurag' : [26, 28, 30]}
+
+
+query_name = 'Harsh'
+
+results = my_Dict.get(query_name)
+
+print(results)
+
+total = 0.00
+
+for val in results:
+    total = total + val
+sum = total/n
+
+
+"""def sum_of_list(list):
+    total = 0.00
+    for val in list:
+        total = total + val
+    return total/n"""
+
+#print("%.2f" % sum_of_list(results))
+print("%.2f" % sum)
